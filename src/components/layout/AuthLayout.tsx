@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { GitMerge } from "lucide-react";
+import { GitMerge, Shield, Star, Users, CheckCircle2 } from "lucide-react";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -9,95 +9,142 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
+  const stats = [
+    { icon: Users, value: "2,500+", label: "Contributors" },
+    { icon: CheckCircle2, value: "8,000+", label: "PRs Merged" },
+    { icon: Star, value: "500+", label: "Projects" },
+  ];
+
+  const testimonial = {
+    quote: "Mergeable helped me overcome my fear of open source. I made my first contribution in just 20 minutes!",
+    author: "Sarah Chen",
+    role: "Junior Developer @ Stripe",
+    avatar: "SC",
+  };
+
   return (
     <div className="min-h-screen flex">
-      {/* Left Panel - Branding */}
+      {/* Left Panel - Branding & Social Proof */}
       <div className="hidden lg:flex lg:w-1/2 gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAzMHYySDI0di0yaDEyek0zNiAyNnYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 h-64 w-64 rounded-full bg-white/20 blur-3xl" />
+          <div className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+        </div>
+
         <div className="relative z-10 flex flex-col justify-between p-12 text-primary-foreground">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
-              <GitMerge className="h-7 w-7" />
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <div className="h-10 w-10 rounded-lg bg-white/10 backdrop-blur flex items-center justify-center">
+              <GitMerge className="h-6 w-6" />
             </div>
-            <span className="text-2xl font-bold">Mergeable</span>
+            <span className="text-xl font-bold">Mergeable</span>
           </Link>
 
+          {/* Main Content */}
           <div className="max-w-md">
-            <h2 className="text-3xl font-bold mb-4">
-              Your first open source contribution starts here
-            </h2>
+            <h1 className="text-4xl font-bold mb-4 leading-tight">
+              Your First Open Source Contribution Starts Here
+            </h1>
             <p className="text-lg opacity-90 mb-8">
-              We break down the barriers between you and meaningful contributions. 
-              No confusion, no fear—just guided success.
+              Join thousands of developers who overcame their fear and made meaningful contributions to real projects.
             </p>
-            
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent text-accent-foreground text-xs font-bold mt-0.5">
-                  1
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 mb-12">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="flex items-center gap-2 mb-1">
+                    <stat.icon className="h-5 w-5 opacity-80" />
+                    <span className="text-2xl font-bold">{stat.value}</span>
+                  </div>
+                  <span className="text-sm opacity-70">{stat.label}</span>
                 </div>
-                <div>
-                  <h4 className="font-semibold">Find beginner-friendly issues</h4>
-                  <p className="text-sm opacity-80">Curated and explained in plain English</p>
-                </div>
+              ))}
+            </div>
+
+            {/* Testimonial */}
+            <div className="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/10">
+              <div className="flex gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                ))}
               </div>
-              <div className="flex items-start gap-3">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent text-accent-foreground text-xs font-bold mt-0.5">
-                  2
+              <p className="text-sm italic mb-4 opacity-95">"{testimonial.quote}"</p>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center text-sm font-semibold">
+                  {testimonial.avatar}
                 </div>
                 <div>
-                  <h4 className="font-semibold">Get guided step-by-step</h4>
-                  <p className="text-sm opacity-80">Never wonder what to do next</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent text-accent-foreground text-xs font-bold mt-0.5">
-                  3
-                </div>
-                <div>
-                  <h4 className="font-semibold">Submit with confidence</h4>
-                  <p className="text-sm opacity-80">Quality checks ensure your PR is ready</p>
+                  <p className="font-medium text-sm">{testimonial.author}</p>
+                  <p className="text-xs opacity-70">{testimonial.role}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-8">
-            <div>
-              <div className="text-3xl font-bold">2,500+</div>
-              <div className="text-sm opacity-80">Contributors</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold">850+</div>
-              <div className="text-sm opacity-80">Merged PRs</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold">120+</div>
-              <div className="text-sm opacity-80">Projects</div>
-            </div>
+          {/* Trust Signals */}
+          <div className="flex items-center gap-6 text-sm opacity-80">
+            <span className="flex items-center gap-1.5">
+              <Shield className="h-4 w-4" />
+              Secure OAuth
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4" />
+              No password stored
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Right Panel - Form */}
-      <div className="flex-1 flex flex-col justify-center p-8 lg:p-12 bg-background">
-        <div className="mx-auto w-full max-w-md">
-          {/* Mobile Logo */}
-          <Link to="/" className="flex lg:hidden items-center gap-2 mb-8 justify-center">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <GitMerge className="h-6 w-6" />
+      {/* Right Panel - Auth Form */}
+      <div className="w-full lg:w-1/2 flex flex-col bg-background">
+        {/* Mobile Logo */}
+        <div className="lg:hidden p-4 border-b border-border">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center">
+              <GitMerge className="h-5 w-5 text-primary-foreground" />
             </div>
             <span className="text-xl font-bold text-foreground">Mergeable</span>
           </Link>
+        </div>
 
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-foreground mb-2">{title}</h1>
-            {subtitle && (
-              <p className="text-muted-foreground">{subtitle}</p>
-            )}
+        <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
+          <div className="w-full max-w-md">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                {title}
+              </h2>
+              {subtitle && (
+                <p className="text-muted-foreground">{subtitle}</p>
+              )}
+            </div>
+
+            {/* Children (Form Content) */}
+            {children}
           </div>
+        </div>
 
-          {children}
+        {/* Footer */}
+        <div className="p-6 border-t border-border bg-muted/30">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
+            <Link to="/legal" className="hover:text-foreground transition-colors">
+              Terms
+            </Link>
+            <span className="text-muted-foreground/50">•</span>
+            <Link to="/legal" className="hover:text-foreground transition-colors">
+              Privacy
+            </Link>
+            <span className="text-muted-foreground/50">•</span>
+            <Link to="/help" className="hover:text-foreground transition-colors">
+              Help
+            </Link>
+            <span className="text-muted-foreground/50">•</span>
+            <Link to="/status" className="hover:text-foreground transition-colors">
+              Status
+            </Link>
+          </div>
         </div>
       </div>
     </div>
