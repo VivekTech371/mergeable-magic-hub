@@ -107,61 +107,61 @@ const HelpHub = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-6 lg:p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-            <BookOpen className="h-8 w-8 text-accent" />
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+            <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-3">Help & Learning Hub</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 sm:mb-3">Help & Learning Hub</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Everything you need to become a confident open source contributor
           </p>
         </div>
 
         {/* Search */}
-        <div className="max-w-xl mx-auto mb-10">
+        <div className="max-w-xl mx-auto mb-8 sm:mb-10">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
             <Input
               placeholder="Search guides, FAQs, and more..."
-              className="pl-10 h-12"
+              className="pl-9 sm:pl-10 h-10 sm:h-12"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
 
-        <Tabs defaultValue="guides" className="space-y-8">
-          <TabsList className="justify-center">
-            <TabsTrigger value="guides" className="gap-2">
-              <FileText className="h-4 w-4" />
-              Guides
+        <Tabs defaultValue="guides" className="space-y-6 sm:space-y-8">
+          <TabsList className="w-full flex flex-wrap justify-center gap-1">
+            <TabsTrigger value="guides" className="gap-1.5 sm:gap-2 text-xs sm:text-sm flex-1 sm:flex-none">
+              <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span>Guides</span>
             </TabsTrigger>
-            <TabsTrigger value="faqs" className="gap-2">
-              <HelpCircle className="h-4 w-4" />
-              FAQs
+            <TabsTrigger value="faqs" className="gap-1.5 sm:gap-2 text-xs sm:text-sm flex-1 sm:flex-none">
+              <HelpCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span>FAQs</span>
             </TabsTrigger>
-            <TabsTrigger value="etiquette" className="gap-2">
-              <MessageCircle className="h-4 w-4" />
-              Etiquette
+            <TabsTrigger value="etiquette" className="gap-1.5 sm:gap-2 text-xs sm:text-sm flex-1 sm:flex-none">
+              <MessageCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span>Etiquette</span>
             </TabsTrigger>
           </TabsList>
 
           {/* Guides */}
           <TabsContent value="guides">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {guides.map((guide) => (
                 <Card key={guide.id} className="hover:shadow-elevated transition-all cursor-pointer">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex items-center gap-2 mb-2 sm:mb-3">
                       <Badge variant="secondary" className="text-xs">{guide.category}</Badge>
                       <span className="text-xs text-muted-foreground">{guide.readTime}</span>
                     </div>
-                    <h3 className="font-semibold text-foreground mb-2">{guide.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{guide.description}</p>
-                    <Button variant="ghost" size="sm" className="p-0 h-auto text-accent">
-                      Read Guide <ArrowRight className="h-4 w-4 ml-1" />
+                    <h3 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">{guide.title}</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">{guide.description}</p>
+                    <Button variant="ghost" size="sm" className="p-0 h-auto text-accent text-xs sm:text-sm">
+                      Read Guide <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 ml-1" />
                     </Button>
                   </CardContent>
                 </Card>

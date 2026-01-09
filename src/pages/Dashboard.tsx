@@ -72,63 +72,63 @@ const Dashboard = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-6 lg:p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, John!</h1>
-          <p className="text-muted-foreground">Here's what's happening with your contributions.</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Welcome back, John!</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Here's what's happening with your contributions.</p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Total Contributions</p>
-                  <p className="text-2xl font-bold text-foreground">{stats.totalContributions}</p>
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">Total Contributions</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.totalContributions}</p>
                 </div>
-                <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <GitPullRequest className="h-5 w-5 text-accent" />
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <GitPullRequest className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
                 </div>
               </div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Merged PRs</p>
-                  <p className="text-2xl font-bold text-success">{stats.mergedPRs}</p>
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">Merged PRs</p>
+                  <p className="text-xl sm:text-2xl font-bold text-success">{stats.mergedPRs}</p>
                 </div>
-                <div className="h-10 w-10 rounded-lg bg-success/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-5 w-5 text-success" />
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-success/10 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-success" />
                 </div>
               </div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Pending</p>
-                  <p className="text-2xl font-bold text-warning">{stats.pendingPRs}</p>
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">Pending</p>
+                  <p className="text-xl sm:text-2xl font-bold text-warning">{stats.pendingPRs}</p>
                 </div>
-                <div className="h-10 w-10 rounded-lg bg-warning/10 flex items-center justify-center">
-                  <Clock className="h-5 w-5 text-warning" />
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-warning/10 flex items-center justify-center flex-shrink-0">
+                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-warning" />
                 </div>
               </div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Day Streak</p>
-                  <p className="text-2xl font-bold text-foreground">{stats.streak}</p>
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">Day Streak</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.streak}</p>
                 </div>
-                <div className="h-10 w-10 rounded-lg bg-pending/10 flex items-center justify-center">
-                  <Zap className="h-5 w-5 text-pending" />
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-pending/10 flex items-center justify-center flex-shrink-0">
+                  <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-pending" />
                 </div>
               </div>
             </CardContent>

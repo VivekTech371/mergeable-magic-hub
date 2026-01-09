@@ -80,40 +80,40 @@ const Profile = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-6 lg:p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Profile Header */}
-        <div className="flex flex-col lg:flex-row gap-6 mb-8">
-          <div className="flex items-start gap-6">
+        <div className="flex flex-col gap-6 mb-8">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
             <img
               src={user.avatar}
               alt={user.name}
-              className="h-24 w-24 rounded-full border-4 border-accent/20"
+              className="h-20 w-20 sm:h-24 sm:w-24 rounded-full border-4 border-accent/20 flex-shrink-0"
             />
-            <div>
-              <h1 className="text-2xl font-bold text-foreground mb-1">{user.name}</h1>
-              <p className="text-muted-foreground mb-3">@{user.username}</p>
-              <p className="text-foreground mb-3">{user.bio}</p>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-1">{user.name}</h1>
+              <p className="text-muted-foreground mb-2 sm:mb-3">@{user.username}</p>
+              <p className="text-foreground mb-2 sm:mb-3 text-sm sm:text-base">{user.bio}</p>
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                 <span className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   {user.location}
                 </span>
                 <span className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
+                  <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   Joined {user.joinedDate}
                 </span>
               </div>
             </div>
           </div>
-          <div className="lg:ml-auto flex gap-3">
-            <Button variant="outline" asChild>
+          <div className="flex flex-wrap gap-2 sm:gap-3">
+            <Button variant="outline" size="sm" asChild className="flex-1 sm:flex-none">
               <a href={user.githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4 mr-2" />
                 GitHub Profile
-                <ExternalLink className="h-3 w-3 ml-2" />
+                <ExternalLink className="h-3 w-3 ml-2 hidden sm:inline" />
               </a>
             </Button>
-            <Button variant="ghost" asChild>
+            <Button variant="ghost" size="sm" asChild>
               <Link to="/settings">
                 <Settings className="h-4 w-4" />
               </Link>
@@ -122,35 +122,35 @@ const Profile = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8">
           <Card>
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-foreground">{user.stats.totalContributions}</div>
-              <div className="text-sm text-muted-foreground">Contributions</div>
+            <CardContent className="p-3 sm:p-4 text-center">
+              <div className="text-xl sm:text-2xl font-bold text-foreground">{user.stats.totalContributions}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Contributions</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-success">{user.stats.mergedPRs}</div>
-              <div className="text-sm text-muted-foreground">Merged PRs</div>
+            <CardContent className="p-3 sm:p-4 text-center">
+              <div className="text-xl sm:text-2xl font-bold text-success">{user.stats.mergedPRs}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Merged PRs</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-pending">{user.stats.pendingPRs}</div>
-              <div className="text-sm text-muted-foreground">Pending</div>
+            <CardContent className="p-3 sm:p-4 text-center">
+              <div className="text-xl sm:text-2xl font-bold text-pending">{user.stats.pendingPRs}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Pending</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-foreground">{user.stats.reposContributed}</div>
-              <div className="text-sm text-muted-foreground">Repositories</div>
+            <CardContent className="p-3 sm:p-4 text-center">
+              <div className="text-xl sm:text-2xl font-bold text-foreground">{user.stats.reposContributed}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Repositories</div>
             </CardContent>
           </Card>
-          <Card>
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-accent">{user.stats.dayStreak}</div>
-              <div className="text-sm text-muted-foreground">Day Streak</div>
+          <Card className="col-span-2 sm:col-span-1">
+            <CardContent className="p-3 sm:p-4 text-center">
+              <div className="text-xl sm:text-2xl font-bold text-accent">{user.stats.dayStreak}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Day Streak</div>
             </CardContent>
           </Card>
         </div>

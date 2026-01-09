@@ -82,64 +82,66 @@ const PRStatus = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-6 lg:p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">PR Status</h1>
-            <p className="text-muted-foreground">Track the status of your pull requests</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">PR Status</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Track the status of your pull requests</p>
           </div>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="self-start sm:self-auto">
             <RefreshCw className="h-4 w-4 mr-2" />
             Refresh
           </Button>
         </div>
 
-        <Tabs defaultValue="active" className="space-y-6">
-          <TabsList>
-            <TabsTrigger value="active">
+        <Tabs defaultValue="active" className="space-y-4 sm:space-y-6">
+          <TabsList className="w-full sm:w-auto">
+            <TabsTrigger value="active" className="flex-1 sm:flex-none text-xs sm:text-sm">
               Active ({pendingPRs.length})
             </TabsTrigger>
-            <TabsTrigger value="completed">
+            <TabsTrigger value="completed" className="flex-1 sm:flex-none text-xs sm:text-sm">
               Completed ({completedPRs.length})
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="active" className="space-y-4">
+          <TabsContent value="active" className="space-y-3 sm:space-y-4">
             {pendingPRs.length > 0 ? (
               pendingPRs.map((pr) => (
                 <Card key={pr.id} className="hover:shadow-elevated transition-all">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col lg:flex-row lg:items-center gap-4">
-                      <div className="h-12 w-12 rounded-xl bg-muted flex items-center justify-center flex-shrink-0">
-                        {getStatusIcon(pr.status)}
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <span className="font-semibold text-foreground">{pr.title}</span>
-                          {getStatusBadge(pr.status)}
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-muted flex items-center justify-center flex-shrink-0">
+                          {getStatusIcon(pr.status)}
                         </div>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          {pr.repo} • #{pr.id} • Created {pr.createdAt}
-                        </p>
-                        {pr.feedback && (
-                          <div className="p-3 rounded-lg bg-warning/10 border border-warning/30 text-sm text-warning">
-                            <strong>Feedback:</strong> {pr.feedback}
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-start gap-2 mb-1">
+                            <span className="font-semibold text-foreground text-sm sm:text-base">{pr.title}</span>
+                            {getStatusBadge(pr.status)}
                           </div>
-                        )}
+                          <p className="text-xs sm:text-sm text-muted-foreground mb-2">
+                            {pr.repo} • #{pr.id} • Created {pr.createdAt}
+                          </p>
+                          {pr.feedback && (
+                            <div className="p-2 sm:p-3 rounded-lg bg-warning/10 border border-warning/30 text-xs sm:text-sm text-warning">
+                              <strong>Feedback:</strong> {pr.feedback}
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      <div className="flex gap-2 flex-shrink-0">
+                      <div className="flex flex-wrap gap-2 ml-0 sm:ml-14 lg:ml-16">
                         {pr.status === "changes_requested" && (
-                          <Button variant="accent" asChild>
+                          <Button variant="accent" size="sm" className="flex-1 sm:flex-none" asChild>
                             <Link to={`/changes-requested/${pr.id}`}>
                               Address Feedback
                               <ArrowRight className="h-4 w-4 ml-2" />
                             </Link>
                           </Button>
                         )}
-                        <Button variant="outline" size="sm" asChild>
+                        <Button variant="outline" size="sm" className="flex-1 sm:flex-none" asChild>
                           <a href="#" target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-2" />
                             GitHub

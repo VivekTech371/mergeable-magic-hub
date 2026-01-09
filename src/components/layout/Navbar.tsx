@@ -125,19 +125,23 @@ const Navbar = ({ isAuthenticated = false }: NavbarProps) => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 rounded-lg hover:bg-muted transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border animate-slide-down">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -152,15 +156,24 @@ const Navbar = ({ isAuthenticated = false }: NavbarProps) => {
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-4 mt-2 border-t border-border flex flex-col gap-2">
+              <div className="pt-4 mt-2 border-t border-border flex flex-col gap-1">
                 {isAuthenticated ? (
                   <>
                     <Link
                       to="/profile"
-                      className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted"
+                      className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted flex items-center gap-2"
                       onClick={() => setMobileMenuOpen(false)}
                     >
+                      <User className="h-4 w-4" />
                       Profile
+                    </Link>
+                    <Link
+                      to="/settings"
+                      className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted flex items-center gap-2"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Settings className="h-4 w-4" />
+                      Settings
                     </Link>
                     <Link
                       to="/login"
@@ -171,18 +184,18 @@ const Navbar = ({ isAuthenticated = false }: NavbarProps) => {
                     </Link>
                   </>
                 ) : (
-                  <>
-                    <Button variant="ghost" className="justify-start" asChild>
+                  <div className="flex flex-col gap-2 px-2">
+                    <Button variant="ghost" className="justify-center w-full" asChild>
                       <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
                         Sign in
                       </Link>
                     </Button>
-                    <Button variant="accent" asChild>
+                    <Button variant="accent" className="w-full" asChild>
                       <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
                         Get Started
                       </Link>
                     </Button>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
