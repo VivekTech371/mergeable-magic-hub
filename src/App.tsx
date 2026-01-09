@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Pages
 import Index from "./pages/Index";
@@ -47,54 +48,56 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          {/* Public Pages */}
-          <Route path="/" element={<Index />} />
-          
-          {/* Auth Pages */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/auth/callback" element={<AuthCallback />} />
-          <Route path="/access-error" element={<AccessError />} />
-          
-          {/* Core Navigation */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/explore" element={<ExploreIssues />} />
-          <Route path="/paused" element={<PausedContributions />} />
-          
-          {/* Understanding & Decision */}
-          <Route path="/issue/:id" element={<IssueDetail />} />
-          <Route path="/contribution-type/:issueId" element={<ContributionTypeSelection />} />
-          <Route path="/readiness-check/:issueId" element={<ReadinessCheck />} />
-          
-          {/* Execution */}
-          <Route path="/workspace" element={<Workspace />} />
-          <Route path="/commit-prep" element={<CommitPreparation />} />
-          <Route path="/quality-check" element={<QualityGate />} />
-          <Route path="/create-pr" element={<CreatePR />} />
-          
-          {/* Post-Submission */}
-          <Route path="/pr-status" element={<PRStatus />} />
-          <Route path="/changes-requested/:prId" element={<ChangesRequested />} />
-          <Route path="/rejection/:prId" element={<RejectionExplanation />} />
-          <Route path="/success/:prId" element={<MergeSuccess />} />
-          
-          {/* Account & System */}
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/help" element={<HelpHub />} />
-          <Route path="/status" element={<SystemStatus />} />
-          <Route path="/legal" element={<Legal />} />
-          
-          {/* Catch-all */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Public Pages */}
+            <Route path="/" element={<Index />} />
+            
+            {/* Auth Pages */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/access-error" element={<AccessError />} />
+            
+            {/* Core Navigation */}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/explore" element={<ExploreIssues />} />
+            <Route path="/paused" element={<PausedContributions />} />
+            
+            {/* Understanding & Decision */}
+            <Route path="/issue/:id" element={<IssueDetail />} />
+            <Route path="/contribution-type/:issueId" element={<ContributionTypeSelection />} />
+            <Route path="/readiness-check/:issueId" element={<ReadinessCheck />} />
+            
+            {/* Execution */}
+            <Route path="/workspace" element={<Workspace />} />
+            <Route path="/commit-prep" element={<CommitPreparation />} />
+            <Route path="/quality-check" element={<QualityGate />} />
+            <Route path="/create-pr" element={<CreatePR />} />
+            
+            {/* Post-Submission */}
+            <Route path="/pr-status" element={<PRStatus />} />
+            <Route path="/changes-requested/:prId" element={<ChangesRequested />} />
+            <Route path="/rejection/:prId" element={<RejectionExplanation />} />
+            <Route path="/success/:prId" element={<MergeSuccess />} />
+            
+            {/* Account & System */}
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/help" element={<HelpHub />} />
+            <Route path="/status" element={<SystemStatus />} />
+            <Route path="/legal" element={<Legal />} />
+            
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
