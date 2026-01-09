@@ -11,18 +11,18 @@ const Legal = () => {
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-10">
-            <h1 className="text-3xl font-bold text-foreground mb-2">Legal & Policies</h1>
-            <p className="text-muted-foreground">Last updated: March 2024</p>
+          <div className="text-center mb-8 sm:mb-10">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Legal & Policies</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Last updated: March 2024</p>
           </div>
 
-          <Tabs defaultValue="terms" className="space-y-8">
-            <TabsList className="w-full justify-start">
-              <TabsTrigger value="terms">Terms of Service</TabsTrigger>
-              <TabsTrigger value="privacy">Privacy Policy</TabsTrigger>
-              <TabsTrigger value="ethics">OSS Ethics</TabsTrigger>
+          <Tabs defaultValue="terms" className="space-y-6 sm:space-y-8">
+            <TabsList className="w-full flex flex-wrap gap-1">
+              <TabsTrigger value="terms" className="flex-1 sm:flex-none text-xs sm:text-sm">Terms of Service</TabsTrigger>
+              <TabsTrigger value="privacy" className="flex-1 sm:flex-none text-xs sm:text-sm">Privacy Policy</TabsTrigger>
+              <TabsTrigger value="ethics" className="flex-1 sm:flex-none text-xs sm:text-sm">OSS Ethics</TabsTrigger>
             </TabsList>
 
             <TabsContent value="terms">

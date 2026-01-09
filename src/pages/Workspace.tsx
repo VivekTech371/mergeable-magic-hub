@@ -67,30 +67,33 @@ Visit [reactjs.org](https://reactjs.org) for full documentation.
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="h-14 border-b border-border bg-card px-4 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-4">
-          <Link to="/dashboard" className="flex items-center gap-2">
+      <header className="h-14 border-b border-border bg-card px-2 sm:px-4 flex items-center justify-between flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+          <Link to="/dashboard" className="flex items-center gap-2 flex-shrink-0">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
               <GitMerge className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="font-bold text-foreground hidden sm:inline">Mergeable</span>
+            <span className="font-bold text-foreground hidden md:inline">Mergeable</span>
           </Link>
-          <div className="h-6 w-px bg-border" />
-          <div>
-            <p className="text-sm font-medium text-foreground">Fix typo in README</p>
-            <p className="text-xs text-muted-foreground">facebook/react</p>
+          <div className="h-6 w-px bg-border hidden sm:block" />
+          <div className="min-w-0 hidden sm:block">
+            <p className="text-sm font-medium text-foreground truncate">Fix typo in README</p>
+            <p className="text-xs text-muted-foreground truncate">facebook/react</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm">
-            <Pause className="h-4 w-4 mr-2" />
-            Pause
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Button variant="outline" size="sm" className="hidden sm:flex">
+            <Pause className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Pause</span>
+          </Button>
+          <Button variant="outline" size="sm" className="sm:hidden">
+            <Pause className="h-4 w-4" />
           </Button>
           <Button variant="accent" size="sm" asChild>
-            <Link to="/commit-prep">
-              <Save className="h-4 w-4 mr-2" />
-              Continue to Commit
+            <Link to="/commit-prep" className="flex items-center">
+              <Save className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Continue to Commit</span>
             </Link>
           </Button>
         </div>
@@ -98,7 +101,7 @@ Visit [reactjs.org](https://reactjs.org) for full documentation.
 
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar - File Tree */}
-        <aside className="w-64 border-r border-border bg-card flex-shrink-0 hidden lg:flex flex-col">
+        <aside className="w-56 xl:w-64 border-r border-border bg-card flex-shrink-0 hidden md:flex flex-col">
           <div className="p-3 border-b border-border">
             <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
               <FolderTree className="h-4 w-4" />
@@ -192,7 +195,7 @@ Visit [reactjs.org](https://reactjs.org) for full documentation.
         </main>
 
         {/* Right Sidebar - Steps & Hints */}
-        <aside className="w-80 border-l border-border bg-card flex-shrink-0 hidden xl:flex flex-col">
+        <aside className="w-72 xl:w-80 border-l border-border bg-card flex-shrink-0 hidden lg:flex flex-col">
           {/* Progress */}
           <div className="p-4 border-b border-border">
             <div className="flex items-center justify-between mb-2">

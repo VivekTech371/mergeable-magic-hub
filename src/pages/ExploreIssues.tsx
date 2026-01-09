@@ -133,8 +133,8 @@ const ExploreIssues = () => {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col lg:flex-row gap-4 mb-8">
-          <div className="relative flex-1">
+        <div className="flex flex-col gap-4 mb-8">
+          <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search issues or repositories..."
@@ -143,10 +143,10 @@ const ExploreIssues = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             <Select value={selectedType} onValueChange={setSelectedType}>
-              <SelectTrigger className="w-[140px]">
-                <Filter className="h-4 w-4 mr-2" />
+              <SelectTrigger className="w-full sm:w-[140px]">
+                <Filter className="h-4 w-4 mr-2 flex-shrink-0" />
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
@@ -159,7 +159,7 @@ const ExploreIssues = () => {
               </SelectContent>
             </Select>
             <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
-              <SelectTrigger className="w-[140px]">
+              <SelectTrigger className="w-[calc(50%-0.25rem)] sm:w-[140px]">
                 <SelectValue placeholder="Difficulty" />
               </SelectTrigger>
               <SelectContent>
@@ -170,7 +170,7 @@ const ExploreIssues = () => {
               </SelectContent>
             </Select>
             <Select value={selectedSkill} onValueChange={setSelectedSkill}>
-              <SelectTrigger className="w-[140px]">
+              <SelectTrigger className="w-[calc(50%-0.25rem)] sm:w-[140px]">
                 <SelectValue placeholder="Skill" />
               </SelectTrigger>
               <SelectContent>
@@ -248,7 +248,7 @@ const ExploreIssues = () => {
                     </div>
 
                     {/* Action */}
-                    <Button variant="accent" className="flex-shrink-0" asChild>
+                    <Button variant="accent" className="flex-shrink-0 w-full lg:w-auto mt-4 lg:mt-0" asChild>
                       <Link to={`/issue/${issue.id}`}>
                         View Issue
                         <ArrowRight className="h-4 w-4 ml-2" />
